@@ -1,15 +1,23 @@
 <template>
   <div class="posts">
+
+    <div>
       <button @click="addPost"> Add new Post </button>
       <input type = "text" v-model="newPost.message">
-
       <h3> Latests Posts </h3>
-      <post-component v-for="postModel in posts" :post-model="postModel"/></post>
-  </div>
+    </div>
+
+    <div>
+      <md-list class="md-triple-line">
+        <post-component v-for="postModel in posts" :post-model="postModel"/></post>
+        <md-divider class="md-inset"></md-divider>
+      </md-list>
+    </div>
+    
+</div>
 </template>
 
 <script>
-
 import PostService from '../services/PostService';
 import PostComponent from '../components/Post';
 
@@ -51,5 +59,12 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+    .md-list {
+    width: 320px;
+    max-width: 100%;
+    display: inline-block;
+    vertical-align: top;
+    border: 1px solid rgba(#000, .12);
+  }
 
 </style>

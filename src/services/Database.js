@@ -11,8 +11,7 @@ export default {
     add(key, value){
         return new Promise((resolve, reject) => {
             const currentData = this.index(key);
-            currentData.push(value);
-            window.console.log(currentData);
+            currentData.unshift(value);
             window.localStorage.setItem(key, JSON.stringify(currentData));
             resolve(value);
         });

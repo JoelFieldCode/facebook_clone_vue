@@ -1,7 +1,14 @@
 <template>
-  <div>
-      {{postModel.message}}
-  </div>
+    <md-list-item>
+        <md-avatar>
+          <img src="https://placeimg.com/40/40/people/1" alt="People">
+        </md-avatar>
+
+        <div class="md-list-item-text">
+          <span>Ali Connors</span>
+          <p>{{postModel.message}}</p>
+        </div>
+    </md-list-item>
 </template>
 
 <script>
