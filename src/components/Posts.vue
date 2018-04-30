@@ -2,8 +2,12 @@
   <div class="posts">
 
     <div>
-      <button @click="addPost"> Add new Post </button>
-      <input type = "text" v-model="newPost.message">
+      <md-button @click="addPost" :disabled="!validPost" class="md-raised md-primary">Add Post</md-button>
+      <!-- <input type = "text" v-model="newPost.message"> -->
+      <md-field>
+        <label>Textarea</label>
+        <md-textarea v-model="newPost.message"></md-textarea>
+      </md-field>
       <h3> Latests Posts </h3>
     </div>
 
@@ -13,7 +17,11 @@
         <md-divider class="md-inset"></md-divider>
       </md-list>
     </div>
-    
+
+    <div v-if="posts.length === 0">
+      No Posts
+    </div>
+
 </div>
 </template>
 
@@ -36,11 +44,17 @@ export default {
     }
   },
 
+  computed: {
+    validPost() {
+      return this.newPost.message !== "";
+    }
+  },
+
   methods: {
     addPost () {
       PostService.add(this.newPost)
         .then(() => {
-          this.newPost = {};
+          this.newPost.message = "";
           this.getPosts();
         });
     },

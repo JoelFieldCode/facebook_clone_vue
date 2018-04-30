@@ -3,12 +3,17 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import Moment from 'moment'
 import VueMaterial from 'vue-material'
 import 'vue-material/dist/vue-material.min.css'
 
 Vue.use(VueMaterial)
 
 Vue.config.productionTip = false
+
+Vue.filter('time_ago', function (timestamp) {
+  return Moment(timestamp, "X").format("DD/MM/YYYY");
+})
 
 /* eslint-disable no-new */
 new Vue({

@@ -6,7 +6,8 @@
 
         <div class="md-list-item-text">
           <span>Ali Connors</span>
-          <p>{{postModel.message}}</p>
+          <span>{{postModel.message}}</span>
+          <p>{{postModel.timestamp | time_ago}}</p>
         </div>
     </md-list-item>
 </template>

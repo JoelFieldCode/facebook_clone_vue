@@ -1,3 +1,5 @@
+import Moment from 'moment';
+
 export default {
 
     index(key){
@@ -9,6 +11,7 @@ export default {
     },
 
     add(key, value){
+        value.timestamp = Moment().format("X");
         return new Promise((resolve, reject) => {
             const currentData = this.index(key);
             currentData.unshift(value);
