@@ -7,7 +7,14 @@
         <div class="md-list-item-text">
           <span>Ali Connors</span>
           <span>{{postModel.message}}</span>
+          <span> ID: {{postModel.id}} </span>
           <p>{{postModel.timestamp | time_ago}}</p>
+        </div>
+
+        <div @click="$emit('delete-post', postModel.id)">
+            <md-button class="md-icon-button md-list-action">
+                <md-icon class="md-primary">delete</md-icon>
+            </md-button>
         </div>
     </md-list-item>
 </template>
@@ -21,5 +28,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
+    .md-list-action{
+        color: red;
+    }
 </style>

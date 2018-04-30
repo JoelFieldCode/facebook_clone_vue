@@ -3,7 +3,6 @@
 
     <div>
       <md-button @click="addPost" :disabled="!validPost" class="md-raised md-primary">Add Post</md-button>
-      <!-- <input type = "text" v-model="newPost.message"> -->
       <md-field>
         <label>Textarea</label>
         <md-textarea v-model="newPost.message"></md-textarea>
@@ -13,7 +12,7 @@
 
     <div>
       <md-list class="md-triple-line">
-        <post-component v-for="postModel in posts" :post-model="postModel"/></post>
+        <post-component v-for="postModel in posts" v-on:delete-post="deletePost":post-model="postModel"/></post>
         <md-divider class="md-inset"></md-divider>
       </md-list>
     </div>
@@ -51,6 +50,12 @@ export default {
   },
 
   methods: {
+    deletePost (id) {
+      PostService.delete(id)
+        .then(() => {
+          this.getPosts();
+        });
+    },
     addPost () {
       PostService.add(this.newPost)
         .then(() => {

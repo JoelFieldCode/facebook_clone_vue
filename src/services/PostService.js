@@ -12,5 +12,13 @@ export default {
                 resolve(Model)
             });
         });
+    },
+
+    delete (id) {
+        return new Promise((resolve, reject) => {
+            Database.delete("posts", id).then( () => {
+                resolve()
+            });
+        });
     }
 }
