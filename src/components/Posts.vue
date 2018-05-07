@@ -65,7 +65,9 @@ export default {
     },
 
     getPosts () {
-      this.posts = PostService.posts();
+      this.posts = PostService.posts().then(resp => {
+          this.posts = resp.data;
+      });
     },
   },
 

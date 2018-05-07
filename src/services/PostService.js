@@ -1,24 +1,17 @@
-import Database from '../services/Database';
+import API_URL from '../config/api'
+import axios from 'axios';
 
 export default {
 
     posts () {
-        return Database.index("posts");
+        return axios.get(`${API_URL}/posts`);
     },
 
-    add (value) {
-        return new Promise((resolve, reject) => {
-            Database.add("posts", value).then( Model => {
-                resolve(Model)
-            });
-        });
+    add (post) {
+        return axios.post(`${API_URL}/post`, post)
     },
 
     delete (id) {
-        return new Promise((resolve, reject) => {
-            Database.delete("posts", id).then( () => {
-                resolve()
-            });
-        });
+        return axios.delete(`${API_URL}/post/${id}`);
     }
 }

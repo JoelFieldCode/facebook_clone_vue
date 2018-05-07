@@ -3,15 +3,13 @@
         <md-avatar>
           <img src="https://placeimg.com/40/40/people/1" alt="People">
         </md-avatar>
-
         <div class="md-list-item-text">
           <span>Ali Connors</span>
           <span>{{postModel.message}}</span>
-          <span> ID: {{postModel.id}} </span>
           <p>{{postModel.timestamp | time_ago}}</p>
         </div>
 
-        <div @click="$emit('delete-post', postModel.id)">
+        <div @click="$emit('delete-post', postModel._id)">
             <md-button class="md-icon-button md-list-action">
                 <md-icon class="md-primary">delete</md-icon>
             </md-button>
