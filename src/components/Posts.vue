@@ -1,10 +1,10 @@
 <template>
   <div class="posts">
 
-    <div>
+    <div class = "add-post-container">
       <md-button @click="addPost" :disabled="!validPost" class="md-raised md-primary">Add Post</md-button>
       <md-field>
-        <label>Textarea</label>
+        <label>What's on your mind?</label>
         <md-textarea v-model="newPost.message"></md-textarea>
       </md-field>
       <h3> Latests Posts </h3>
@@ -86,6 +86,12 @@ export default {
     display: inline-block;
     vertical-align: top;
     border: 1px solid rgba(#000, .12);
+  }
+
+  .add-post-container{
+    margin-left: auto;
+    margin-right: auto;
+    width: 10%;
   }
 
 </style>
