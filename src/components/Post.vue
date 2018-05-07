@@ -6,7 +6,7 @@
         <div class="md-list-item-text">
           <span>Ali Connors</span>
           <span>{{postModel.message}}</span>
-          <p>{{postModel.timestamp | time_ago}}</p>
+          <p>{{postModel.updatedAt | time_ago}}</p>
         </div>
 
         <div @click="$emit('delete-post', postModel._id)">

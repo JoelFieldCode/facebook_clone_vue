@@ -12,7 +12,19 @@ Vue.use(VueMaterial)
 Vue.config.productionTip = false
 
 Vue.filter('time_ago', function (timestamp) {
-  return Moment(timestamp, "X").format("DD/MM/YYYY");
+  const secondsAgo = Moment().diff(Moment(timestamp), 'seconds');
+  if(secondsAgo < 60){
+    if(secondsAgo === 0){
+      return "just now";
+    }
+    return Math.round(secondsAgo) + " seconds ago";
+  }
+  
+  if(secondsAgo > 59 && secondsAgo < 3600){
+    return Math.round((secondsAgo / 60)) + " minutes ago";
+  }
+
+  return secondsAgo / 60 / 60 + " hours ago";
 })
 
 /* eslint-disable no-new */
